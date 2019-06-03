@@ -13,7 +13,7 @@ public class Main {
 
 		System.out.println("distribution des cartes paquet 1:");
 		bataille.afficher();
-		System.out.println("distribution des cartes paquet 2:");
+		System.out.println("distribution des cartes paquet :");
 		bataille2.afficher();
 
 	}
