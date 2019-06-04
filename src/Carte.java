@@ -1,17 +1,17 @@
 
 public class Carte {
 
-	//variables d'instance: dÃ©finissent les caractÃ©ristiques de note objet Carte
+	// variables d'instance: définissent les caractéristiques de note objet Carte
 	private String color;
 	private int valeur;
 
-	// CONSTRUCTEUR: doit porter le mÃªme nom que notre classe, soit ici Carte
+	// CONSTRUCTEUR: doit porter le même nom que notre classe, soit ici Carte
 	// on lui passe des parametres
 	public Carte(String pcolor, int pvaleur) {
-		super(); // ???
 
-		//this. fait rÃ©fÃ©rence aux variables d'instances de notre classe dÃ©clarÃ©es ci-dessus
-		//pcolor et pvaleur sont les parametres du constructeur
+		// this. fait référence aux variables d'instances de notre classe déclarées
+		// ci-dessus
+		// pcolor et pvaleur sont les parametres du constructeur
 		this.color = pcolor;
 		this.valeur = pvaleur;
 	}
@@ -23,20 +23,21 @@ public class Carte {
 		return color;
 	}
 
-	//retourne la valeur de notre objet Carte
+	// retourne la valeur de notre objet Carte
 	public int getValeur() {
 		return valeur;
 	}
 
 	// ************* MUTATEURS *************
 
-	//dÃ©finit la couleur de la carte
+	// définit la couleur de la carte
 	public void setColor(String pcolor) {
 		this.color = pcolor;
 	}
 
-	// dÃ©finit la valeur de la carte
+	// définit la valeur de la carte
 	public void setValeur(int pvaleur) {
 		this.valeur = pvaleur;
 	}
+
 }

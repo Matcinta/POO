@@ -2,85 +2,119 @@ import java.util.Random;
 
 public class Jeu {
 
-	//variable d'instance ?
+	// variable d'instance
 	private Carte[] cartes;
 
-	// mÃ©thode Jeu
+	// Constructeur
 	public Jeu() {
+
 		// on instancie un nouveau jeu de 52 cartes
 		this.cartes = new Carte[52];
 
-		// variable d'instance: dÃ©finit les caractÃ©ristiques de notre objet Jeu ou Carte?
-		// dÃ©claration d'un tableau nommÃ© couleurs contenant des attributs (4) de type String
+	}
+
+	// Constructeur
+	public Jeu(Carte[] cartes) {
+
+		// on instancie un nouveau jeu de 52 cartes
+		this.cartes = cartes;
+
+	}
+
+	// Getters
+	public Carte[] getCartes() {
+		return cartes;
+	}
+
+	// Setters
+	public void setCartes(Carte[] cartes) {
+		this.cartes = cartes;
+	}
+
+	// méthode Jeu
+	public void initialisation() {
+
+		// variable d'instance: définit les caractéristiques de notre objet Jeu ou
+		// Carte?
+		// déclaration d'un tableau nommé couleurs contenant des attributs (4) de type
+		// String
 		String[] couleurs = { "Coeur", "Pique", "Carreau", "Trefle" };
 
-		// on initialise un pointeur k Ã  0
+		// on initialise un pointeur k à 0
 		int k = 0;
-		// boucle principale qui est rÃ©pÃ©tÃ©e 4 fois
+		// boucle principale qui est répétée 4 fois
 		for (int i = 0; i < couleurs.length; i++) {
 
-			// boucle secondaire qui est rÃ©pÃ©tÃ©e 13 fois
-			for (int j = 1; j <= 13; j++) { 
-				// le pointeur k augmente de 1 Ã  chaque tour de boucle et crÃ©Ã©e une nouvelle
-				// Carte de couleur i et de valeur j dans le tableau 
+			// boucle secondaire qui est répètée 13 fois
+			for (int j = 1; j <= 13; j++) {
+				// le pointeur k augmente de 1 à  chaque tour de boucle et créée une nouvelle
+				// Carte de couleur i et de valeur j dans le tableau
 				cartes[k++] = new Carte(couleurs[i], j);
 			}
 
 		}
 	}
 
-	// mÃ©thode afficher qui ne renvoie rien (void)
+	// méthode afficher qui ne renvoie rien (void)
 	public void afficher() {
-		//boucle qui va de 0 Ã  52 cartes
+		// boucle qui va de 0 à 52 cartes
 		for (int i = 0; i < cartes.length; i++) {
-			//j'affiche les couleurs et valeurs de cartes dans le tableau aux index de 0 Ã  52
+			// j'affiche les couleurs et valeurs de cartes dans le tableau aux index de 0 à 
+			// 52
+
+			if (cartes[i] == null)
+				break;
+
 			System.out.println(cartes[i].getColor() + cartes[i].getValeur());
 		}
 
 	}
 
-	/* mÃ©thode mÃ©langer qui ne renvoie rien mais utilise la methode permuter
-	 j'indiquerai le nombre de permutation que je veux faire en parametre
-	quand j'appelerai la mÃ©thode dans le main */
+	/*
+	 * méthode mélanger qui ne renvoie rien mais utilise la methode permuter
+	 * j'indiquerai le nombre de permutation que je veux faire en parametre quand
+	 * j'appelerai la méthode dans le main
+	 */
 	public void melanger(int nbpermutation) {
 		for (int i = 0; i < nbpermutation; i++) {
 			this.permuter();
 		}
 	}
 
-	// mÃ©thode permuter qui ne renvoie rien (void)
+	// méthode permuter qui ne renvoie rien (void)
 	public void permuter() {
-		//je crÃ©Ã© un nouveau chiffre alÃ©atoire
+		// je créé un nouveau chiffre aléatoire
 		Random rand = new Random();
-		//je dÃ©clare une variable a de type int qui correspond
-		// Ã  un index alÃ©atoire dans le tableau cartes
+		// je déclare une variable a de type int qui correspond
+		// à  un index aléatoire dans le tableau cartes
 		int a = rand.nextInt(cartes.length);
 		int b = rand.nextInt(cartes.length);
 
-		//je dÃ©clare un objet temp de type Carte qui correspond Ã  la carte Ã  l'index a du tableau
+		// je déclare un objet temp de type Carte qui correspond à  la carte à  l'index
+		// a du tableau
 		Carte temp = cartes[a];
-		// je place ma carte Ã  l'index b, dans l'index a
+		// je place ma carte à  l'index b, dans l'index a
 		cartes[a] = cartes[b];
 		// je place ma carte temp, dans l'index b
 		cartes[b] = temp;
 
 	}
 
-	// mÃ©thode diviser de type Jeu
+	// méthode diviser de type Jeu
 	public Jeu diviser() {
-		//je crÃ©Ã©e un jeu1 (tableau) qui contient la moitiÃ© du jeu de 52 cartes
+		// je créée un jeu1 (tableau) qui contient la moitié du jeu de 52 cartes
 		Carte[] jeu1 = new Carte[cartes.length / 2];
-		//je crÃ©Ã©e un jeu2 (tableau) qui contient la moitiÃ© du jeu de 52 cartes
+		// je créée un jeu2 (tableau) qui contient la moitié du jeu de 52 cartes
 		Carte[] jeu2 = new Carte[cartes.length / 2];
 
-		//je place les 26 premieres cartes (index 0 Ã  25) dans le tableau jeu1
+		// je place les 26 premieres cartes (index 0 à  25) dans le tableau jeu1
 		for (int i = 0; i < cartes.length / 2; i++) {
 			jeu1[i] = this.cartes[i];
 		}
-		//je dÃ©clare une variable k instanciÃ©e Ã  0 pour attribuer les index
-		// 0 Ã  25 dans mon nouveau tableau jeu2
+		// je déclare une variable k instanciée à  0 pour attribuer les index
+		// 0 à  25 dans mon nouveau tableau jeu2
 		int k = 0;
-		//je place les 26 cartes suivantes (index 51 Ã  26) dans le tableau jeu2
+		// je place les 26 cartes suivantes (index 51 à  26) dans le tableau jeu2
 		for (int i = cartes.length - 1; i >= cartes.length / 2; i--) {
 			jeu2[k++] = this.cartes[i];
 		}
@@ -92,8 +126,13 @@ public class Jeu {
 		return newGame;
 
 	}
-	// ??
-	public Jeu(Carte[] temp) {
-		this.cartes = temp;
+
+	public void distribuer(Jeu jeu1, Jeu jeu2) {
+
+		for (int i = 0; i < cartes.length / 2; i++) {
+			jeu1.getCartes()[i] = this.cartes[i * 2];
+			jeu2.getCartes()[i] = this.cartes[i * 2 + 1];
+		}
 	}
+
 }
